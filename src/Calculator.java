@@ -4,11 +4,16 @@ public class Calculator {
 
         double taxPercent = 8;
         double tipPercent = 15;
+        double taxAmount = taxPercent / 100;
 
         double personOneAppetizerCost = 9.99;
         double personOneMainCost = 23.99;
         double personOneDessertCost = 10.29;
         double personOneDrinkCost = 8.50;
+        double personOneSubTotal = personOneAppetizerCost + personOneMainCost + personOneDessertCost + personOneDrinkCost;
+        double personOneTax = taxAmount * personOneSubTotal;
+        double personOneTip = tipPercent / 100 * personOneSubTotal;
+        double personOneTotal = personOneSubTotal + personOneTax + personOneTip;
         String personOneName = "Adeline";
         String personOneAppetizer = "Stuffed Ziti Fritta";
         String personOneMain = "Shrimp Scampi";
@@ -19,6 +24,10 @@ public class Calculator {
         double personTwoMainCost = 18.99;
         double personTwoDessertCost = 9.99;
         double personTwoDrinkCost = 4.25;
+        double personTwoSubTotal = personTwoAppetizerCost + personTwoMainCost + personTwoDessertCost + personTwoDrinkCost;
+        double personTwoTax = taxAmount * personTwoSubTotal;
+        double personTwoTip = tipPercent / 100 * personTwoSubTotal;
+        double personTwoTotal = personTwoSubTotal + personTwoTax + personTwoTip;
         String personTwoName = "Brixton";
         String personTwoAppetizer = "Lasagna Fritta";
         String personTwoMain = "Fettuccine Alfredo";
@@ -29,6 +38,10 @@ public class Calculator {
         double personThreeMainCost = 26.79;
         double personThreeDessertCost = 10.29;
         double personThreeDrinkCost = 3.75;
+        double personThreeSubTotal = personThreeAppetizerCost + personThreeMainCost + personThreeDessertCost + personThreeDrinkCost;
+        double personThreeTax = taxAmount * personThreeSubTotal;
+        double personThreeTip = tipPercent / 100 * personThreeSubTotal;
+        double personThreeTotal = personThreeSubTotal + personThreeTax + personThreeTip;
         String personThreeName = "Cora";
         String personThreeAppetizer = "Fried Mozzarella";
         String personThreeMain = "Tour of Italy";
@@ -39,6 +52,10 @@ public class Calculator {
         double personFourMainCost = 25.99;
         double personFourDessertCost = 4.49;
         double personFourDrinkCost = 7.50;
+        double personFourSubTotal = personFourAppetizerCost + personFourMainCost + personFourDessertCost + personFourDrinkCost;
+        double personFourTax = taxAmount * personFourSubTotal;
+        double personFourTip = tipPercent / 100 * personFourSubTotal;
+        double personFourTotal = personFourSubTotal + personFourTax + personFourTip;
         String personFourName = "Dean";
         String personFourAppetizer = "Classic Shrimp Scampi Fritta";
         String personFourMain = "Seafood Alfredo";
@@ -48,6 +65,25 @@ public class Calculator {
         boolean leaveTip = true;
         boolean splitBillEvenly = true;
 
+        double mealSubTotal = personOneSubTotal + personTwoSubTotal + personThreeSubTotal + personFourSubTotal;
+        double mealTax = taxAmount * mealSubTotal;
+        double mealTip = tipPercent / 100 * mealSubTotal;
+        double totalMealCost = mealSubTotal + mealTax + mealTip;
+        double evenCostPerPerson = totalMealCost / numberOfPersons;
+
         System.out.println("The bill calculator!");
+        System.out.println("Tota cost of the meal");
+        System.out.println(totalMealCost);
+        System.out.println("Amount each person pays if split evenly");
+        System.out.println(evenCostPerPerson);
+        System.out.println("If not split evenly:");
+        System.out.println(personOneName);
+        System.out.println(personOneTotal);
+        System.out.println(personTwoName);
+        System.out.println(personTwoTotal);
+        System.out.println(personThreeName);
+        System.out.println(personThreeTotal);
+        System.out.println(personFourName);
+        System.out.println(personFourTotal);
     }
 }
