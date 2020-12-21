@@ -21,10 +21,14 @@ public class TryItOut {
 //        System.out.println(a);
 //        System.out.println(b);
 
-        double a = 0.2;
-        double b = 0.4;
-        double c = a * b;
-        System.out.println(c);
+//        double a = 0.2;
+//        double b = 0.4;
+//        double c = a * b;
+//        System.out.println(c);
+
+        double x = -5.0;
+        double y = Math.abs(x);
+        System.out.printf("x is %.1f y is %.1f", x, y);
 
 
     }

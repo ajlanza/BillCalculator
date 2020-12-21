@@ -12,8 +12,6 @@ public class Calculator {
         double personOneDrinkCost = 8.50;
         double personOneSubTotal = personOneAppetizerCost + personOneMainCost + personOneDessertCost + personOneDrinkCost;
         double personOneTax = taxAmount * personOneSubTotal;
-        double personOneTip = tipPercent / 100 * personOneSubTotal;
-        double personOneTotal = personOneSubTotal + personOneTax + personOneTip;
         String personOneName = "Adeline";
         String personOneAppetizer = "Stuffed Ziti Fritta";
         String personOneMain = "Shrimp Scampi";
@@ -26,8 +24,6 @@ public class Calculator {
         double personTwoDrinkCost = 4.25;
         double personTwoSubTotal = personTwoAppetizerCost + personTwoMainCost + personTwoDessertCost + personTwoDrinkCost;
         double personTwoTax = taxAmount * personTwoSubTotal;
-        double personTwoTip = tipPercent / 100 * personTwoSubTotal;
-        double personTwoTotal = personTwoSubTotal + personTwoTax + personTwoTip;
         String personTwoName = "Brixton";
         String personTwoAppetizer = "Lasagna Fritta";
         String personTwoMain = "Fettuccine Alfredo";
@@ -40,8 +36,6 @@ public class Calculator {
         double personThreeDrinkCost = 3.75;
         double personThreeSubTotal = personThreeAppetizerCost + personThreeMainCost + personThreeDessertCost + personThreeDrinkCost;
         double personThreeTax = taxAmount * personThreeSubTotal;
-        double personThreeTip = tipPercent / 100 * personThreeSubTotal;
-        double personThreeTotal = personThreeSubTotal + personThreeTax + personThreeTip;
         String personThreeName = "Cora";
         String personThreeAppetizer = "Fried Mozzarella";
         String personThreeMain = "Tour of Italy";
@@ -54,8 +48,6 @@ public class Calculator {
         double personFourDrinkCost = 7.50;
         double personFourSubTotal = personFourAppetizerCost + personFourMainCost + personFourDessertCost + personFourDrinkCost;
         double personFourTax = taxAmount * personFourSubTotal;
-        double personFourTip = tipPercent / 100 * personFourSubTotal;
-        double personFourTotal = personFourSubTotal + personFourTax + personFourTip;
         String personFourName = "Dean";
         String personFourAppetizer = "Classic Shrimp Scampi Fritta";
         String personFourMain = "Seafood Alfredo";
@@ -63,29 +55,77 @@ public class Calculator {
         String personFourDrink = "Coke x 2";
 
         boolean leaveTip = false;
-        boolean splitBillEvenly = true;
 
         double mealSubTotal = personOneSubTotal + personTwoSubTotal + personThreeSubTotal + personFourSubTotal;
         double mealTax = taxAmount * mealSubTotal;
         double mealTip = 0;
-        double totalMealCost = 0;
+        double personOneTip = 0;
+        double personTwoTip = 0;
+        double personThreeTip = 0;
+        double personFourTip = 0;
+
+
         if(leaveTip){
             mealTip = tipPercent / 100 * mealSubTotal;
-            totalMealCost = mealSubTotal + mealTax + mealTip;
+            personOneTip = tipPercent / 100 * personOneSubTotal;
+            personTwoTip = tipPercent / 100 * personTwoSubTotal;
+            personThreeTip = tipPercent / 100 * personThreeSubTotal;
+            personFourTip = tipPercent / 100 * personFourSubTotal;
+
+
         }
-        else{
-            totalMealCost = mealSubTotal + mealTax;
-        }
+        double totalMealCost = mealSubTotal + mealTax + mealTip;
+        double personOneTotal = personOneSubTotal + personOneTip + personOneTax;
+        double personTwoTotal = personTwoSubTotal + personTwoTip + personTwoTax;
+        double personThreeTotal = personThreeSubTotal + personThreeTip + personThreeTax;
+        double personFourTotal = personFourSubTotal + personFourTip + personFourTax;
+
         double evenCostPerPerson = totalMealCost / numberOfPersons;
+        double diffPersonOne = Math.abs(personOneTotal - evenCostPerPerson);
+        double diffPersonTwo = Math.abs(personTwoTotal - evenCostPerPerson);
+        double diffPersonThree = Math.abs(personThreeTotal - evenCostPerPerson);
+        double diffPersonFour = Math.abs(personFourTotal - evenCostPerPerson);
+        boolean splitBillEvenly = (diffPersonOne < 5) && (diffPersonTwo < 5) && (diffPersonThree < 5) && (diffPersonFour < 5);
 
         System.out.println("The Bill Calculator!");
-        System.out.println("--------------------");
-        System.out.printf("Total cost of the meal: $%.2f (including $%.2f tax and $%.2f tip)\n", totalMealCost, mealTax, mealTip);
-        System.out.printf("Amount each person pays if split evenly in %d: $%.2f\n", numberOfPersons, evenCostPerPerson);
-        System.out.println("If not split evenly:");
-        System.out.printf("%s's meal costs: $%.2f\n", personOneName, personOneTotal);
-        System.out.printf("%s's meal costs: $%.2f\n", personTwoName, personTwoTotal);
-        System.out.printf("%s's meal costs: $%.2f\n", personThreeName, personThreeTotal);
-        System.out.printf("%s's meal costs: $%.2f\n", personFourName, personFourTotal);
+        System.out.println("--------------------\n");
+        if(leaveTip){
+            System.out.println("The service was good, tip will be paid");
+        }
+        else{
+            System.out.println("The service was bad, no tip will be added");
+        }
+        System.out.printf("%s had \n%s\t %.2f\n", personOneName, personOneAppetizer, personOneAppetizerCost);
+        System.out.printf("%s\t $%.2f\n", personOneMain, personOneMainCost);
+        System.out.printf("%s\t $%.2f\n", personOneDessert, personOneDessertCost);
+        System.out.printf("%s\t $%.2f\n", personOneDrink, personOneDrinkCost);
+        System.out.printf("%s's meal costs: $%.2f\n\n", personOneName, personOneTotal);
+
+        System.out.printf("%s had \n%s\t %.2f\n", personTwoName, personTwoAppetizer, personTwoAppetizerCost);
+        System.out.printf("%s\t $%.2f\n", personTwoMain, personTwoMainCost);
+        System.out.printf("%s\t $%.2f\n", personTwoDessert, personTwoDessertCost);
+        System.out.printf("%s\t $%.2f\n", personTwoDrink, personTwoDrinkCost);
+        System.out.printf("%s's meal costs: $%.2f\n\n", personTwoName, personTwoTotal);
+
+        System.out.printf("%s had \n%s\t %.2f\n", personThreeName, personThreeAppetizer, personThreeAppetizerCost);
+        System.out.printf("%s\t $%.2f\n", personThreeMain, personThreeMainCost);
+        System.out.printf("%s\t $%.2f\n", personThreeDessert, personThreeDessertCost);
+        System.out.printf("%s\t $%.2f\n", personThreeDrink, personThreeDrinkCost);
+        System.out.printf("%s's meal costs: $%.2f\n\n", personThreeName, personThreeTotal);
+
+        System.out.printf("%s had \n%s\t %.2f\n", personFourName, personFourAppetizer, personFourAppetizerCost);
+        System.out.printf("%s\t $%.2f\n", personFourMain, personFourMainCost);
+        System.out.printf("%s\t $%.2f\n", personFourDessert, personFourDessertCost);
+        System.out.printf("%s\t $%.2f\n", personFourDrink, personFourDrinkCost);
+        System.out.printf("%s's meal costs: $%.2f\n\n", personFourName, personFourTotal);
+
+        System.out.printf("Total cost of the meal: $%.2f (including $%.2f tax and $%.2f tip)\n\n", totalMealCost, mealTax, mealTip);
+        System.out.printf("Amount each person pays if split evenly in %d: $%.2f\n\n", numberOfPersons, evenCostPerPerson);
+        if(splitBillEvenly) {
+            System.out.println("The bill should be split evenly.");
+        }
+        else{
+            System.out.println("The bill should not be split evenly.");
+        }
     }
 }
