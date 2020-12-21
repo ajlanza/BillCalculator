@@ -71,19 +71,14 @@ public class Calculator {
         double totalMealCost = mealSubTotal + mealTax + mealTip;
         double evenCostPerPerson = totalMealCost / numberOfPersons;
 
-        System.out.println("The bill calculator!");
-        System.out.println("Tota cost of the meal");
-        System.out.println(totalMealCost);
-        System.out.println("Amount each person pays if split evenly");
-        System.out.println(evenCostPerPerson);
+        System.out.println("The Bill Calculator!");
+        System.out.println("--------------------");
+        System.out.printf("Total cost of the meal: $%.2f (including $%.2f tax and $%.2f tip)\n", totalMealCost, mealTax, mealTip);
+        System.out.printf("Amount each person pays if split evenly in %d: $%.2f\n", numberOfPersons, evenCostPerPerson);
         System.out.println("If not split evenly:");
-        System.out.println(personOneName);
-        System.out.println(personOneTotal);
-        System.out.println(personTwoName);
-        System.out.println(personTwoTotal);
-        System.out.println(personThreeName);
-        System.out.println(personThreeTotal);
-        System.out.println(personFourName);
-        System.out.println(personFourTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personOneName, personOneTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personTwoName, personTwoTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personThreeName, personThreeTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personFourName, personFourTotal);
     }
 }
