@@ -62,13 +62,20 @@ public class Calculator {
         String personFourDessert = "Dolcini";
         String personFourDrink = "Coke x 2";
 
-        boolean leaveTip = true;
+        boolean leaveTip = false;
         boolean splitBillEvenly = true;
 
         double mealSubTotal = personOneSubTotal + personTwoSubTotal + personThreeSubTotal + personFourSubTotal;
         double mealTax = taxAmount * mealSubTotal;
-        double mealTip = tipPercent / 100 * mealSubTotal;
-        double totalMealCost = mealSubTotal + mealTax + mealTip;
+        double mealTip = 0;
+        double totalMealCost = 0;
+        if(leaveTip){
+            mealTip = tipPercent / 100 * mealSubTotal;
+            totalMealCost = mealSubTotal + mealTax + mealTip;
+        }
+        else{
+            totalMealCost = mealSubTotal + mealTax;
+        }
         double evenCostPerPerson = totalMealCost / numberOfPersons;
 
         System.out.println("The Bill Calculator!");
